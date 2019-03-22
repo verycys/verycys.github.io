@@ -100,10 +100,11 @@ Code
 ```
 이것은 주석 테스트 문장입니다.[^1]
 
-[^1]: 주석을 다는 방법
+[^1]: 1에 대한 설명
 ```
 이것은 주석 테스트 문장 1입니다. [^1] <br>
-이것은 주석 테스트 문장 2입니다. [^2]
+
+참고로 제가 적용한 Minimal-Mistakes 테마버전은 4.15.2 입니다. 그런데 4.15.2 버전에서 Footnote를 달면 정확한 Footnote로 이동되지 않는 오류가 있었습니다. 그래서 `assets/js/_main.js`와 `assets/js/main.min.js`를 4.14.2 버전으로 수정해보았더니 정확한 Footnote로 이동되었습니다. 아직 자바스크립트를 공부하지 않아 이유는 알 수 없습니다만 참고목적으로 적어 둡니다.
 
 ## Header
 ```
@@ -266,5 +267,4 @@ This tag shows **bold text**.
 [2]: https://www.markdownguide.org/
 [3]: https://kramdown.gettalong.org/index.html
 
-[^1]: 주석1
-[^2]: 주석2
+[^1]: 1에 대한 설명
