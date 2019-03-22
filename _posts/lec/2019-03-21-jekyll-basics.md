@@ -31,7 +31,7 @@ Jekyll을 설치하기 위해서는 2가지 프로그램이 필요합니다. 하
 ├── about.md
 └── index.md
 ```
-- `_posts`: 모든 블로그 포스트를 저장해 두는 폴더 입니다. YEAR-MONTH-DAY-title.MARKUP과 같이 파일 명명규칙을 따라야 합니다.
+- `_posts`: 모든 블로그 포스트를 저장해 두는 디렉토리 입니다. YEAR-MONTH-DAY-title.MARKUP과 같이 파일 명명규칙을 따라야 합니다.
 - `config.yml`: 환경설정 정보를 보관합니다. yml파일은 Key value pair나 variables 등을 저장하는 language입니다.
 - `Gemfile`: 블로그의 모든 dependencies를 저장합니다.
 - Jekyll 참고링크
@@ -97,10 +97,65 @@ values의 범위를 scope에 존재하는 모든 파일로 제한하고 있습�
   - [머리말 기본값][8]
 
 ## Themes
-다시보며 정리해야함
+`jekyll new .`으로 사이트 생성을 했으면 기본적으로 minima 테마가 적용되어 있습니다. 이 테마를 바꾸고 싶으면 [RubyGems][9]에서 원하는 테마를 검색합니다. 강의에서는 [jekyll-theme-hacker][10] 테마를 예시로 보여줍니다. 테마를 적용하기 위해 먼저 `Gemfile`에 `gem "jekyll-theme-hacker"` 코드를 추가합니다. 그리고 나서 테마 설치를 위해 터미널에 다음의 명령어를 입력합니다.
+```sh
+$ bundle install
+```
+테마 설치를 완료한 후 `_config.yml` 파일에 `theme: jekyll-theme-hacker` 코드를 추가합니다. 그리고 테마 적용을 위해 터미널에 다음의 명령어를 입력합니다.
+```sh
+$ bundle exec jekyll serve
+```
+명령어를 입력하면 터미널에 Build Warning이 보입니다. 그 이유는 minima 테마는 post, page, home 등의 layout을 사용하는데 hacker 테마는 default와 post layout을 사용합니다. 어떤 layout을 사용하는지는 hacker 테마의 [github][11]에서 확인할 수 있습니다. 따라서 기존 파일들(포스트, 페이지 등)의 layout을 default나 post로 변경해주면 로컬사이트에서 테마가 변경된 것을 확인할 수 있습니다.
+
+- Jekyll 참고링크
+  - [테마][12]
 
 ## Layouts
-다시보며 정리해야함
+Layout은 HTML로 작성된 홈페이지의 기본 골격입니다. 루트 디렉토리에 `_layouts` 디렉토리를 만든 후 그 안에 layout파일들을 위치시키면 포스트나 페이지를 생성할 때 해당 layout을 가져다 쓸 수 있습니다. 강의에서는 다음과 같이 layouts 디렉토리와 post.html 파일을 만든 후 post.html 파일에 아래의 코드를 작성하였습니다.
+```sh
+├── _layouts
+│   └── post.html
+```
+{% raw %}
+```html
+<h1>This is a post</h1>
+<hr>
+{{ content }}
+```
+{% endraw %}
+기존의 포스트를 다시 보면 새로 작성된 post layout이 적용된 것을 확인할 수 있습니다.
+
+Layout에 다른 layout을 적용하여 쓸 수도 있습니다. `_layouts` 디렉토리에 wrapper.html 파일을 새로 만듭니다. wrapper.html에 다음의 코드를 작성합니다. layout 위 아래에 Wrapper 문구가 표시되도록 하는 코드입니다.
+{% raw %}
+```html
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Document</title>
+  </head>
+  <body>
+    Wrapper <br>
+    {{ content }}
+    <br> Wrapper
+  </body>
+</html>
+```
+{% endraw %}
+그리고 post.html을 다음과 같이 작성합니다.
+{% raw %}
+```html
+---
+layout: "wrapper"
+---
+<h1>This is post</h1>
+<hr>
+{{ content }}
+```
+{% endraw %}
+저장을 한 후 포스트 페이지를 새로고침하면 다음의 화면이 출력됨을 확인할 수 있습니다. 즉, 머리말에 layout 값을 입력해주면 현재 layout에 다른 layout을 적용할 수도 있습니다.
+{% include figure image_path="/assets/images/posts/jekyll-basics-layouts01.png" %}
+- Jekyll 참고링크(Layouts은 국문사이트가 없습니다.)
+  - [Layouts][13]
 
 ## Variables
 다시보며 정리해야함
@@ -137,3 +192,8 @@ git checkout -b gh-pages
 [6]: https://jekyllrb-ko.github.io/docs/pages/
 [7]: https://jekyllrb-ko.github.io/docs/permalinks/
 [8]: https://jekyllrb-ko.github.io/docs/configuration/#front-matter-defaults
+[9]: https://rubygems.org/
+[10]: https://rubygems.org/gems/jekyll-theme-hacker
+[11]: https://github.com/pages-themes/hacker/tree/master/_layouts
+[12]: https://jekyllrb-ko.github.io/docs/themes/
+[13]: https://jekyllrb.com/docs/layouts/

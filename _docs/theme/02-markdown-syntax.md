@@ -4,8 +4,6 @@ date:   2019-03-13
 last_modified_at: 2019-03-21
 permalink: /docs/markdown-syntax/
 ---
-{{ child.url }}
-
 제가 Note를 작성하면서 필요하다고 생각하는 마크다운 Syntax를 정리하였습니다. 위가 마크다운이고 아래가 실행결과입니다. 나열순서는 ABC 순입니다.
 
 ## Blockquotes
@@ -31,7 +29,7 @@ Innovation is saying no to 1,000 things.
 {: .small}
 
 ## Codeblock
-위아래를 3개의 back quote로 감싼 후 Code라고 기재된 곳에 Code를 입력하시면 아래의 화면이 출력됩니다.
+위아래를 3개의 back quote로 감싼 후 Code라고 기재된 곳에 Code를 입력하면 아래의 화면이 출력됩니다.
 <pre>
 ```html
 Code
@@ -65,6 +63,7 @@ class ArticleQuerySet(models.QuerySet):
         return qs
 ```
 ***
+`pre` tag로 감싸면 흰 배경으로 실행됩니다.
 ```
 <pre>
 Code
@@ -78,6 +77,33 @@ Code
 	line-height: 1.2;
 	and here's a line of some really, really, really, really long text, just to see how the PRE tag handles it and to find out how it overflows;
 </pre>
+***
+Writing Liquid Template in Markdown Code Blocks with Jekyll - [참고링크][1]<br>
+1에 raw를 입력하고 2에 endraw를 입력한 후 실행하면 아래의 결과가 나타납니다.
+{% raw %}
+<pre>
+{% 1 %}
+```html
+Code
+```
+{% 2 %}
+</pre>
+{% endraw %}
+{% raw %}
+```html
+<h1>Writing Liquid tags</h1>
+{{ content }}
+```
+{% endraw %}
+
+## Footnote
+```
+이것은 주석 테스트 문장입니다.[^1]
+
+[^1]: 주석을 다는 방법
+```
+이것은 주석 테스트 문장 1입니다. [^1] <br>
+이것은 주석 테스트 문장 2입니다. [^2]
 
 ## Header
 ```
@@ -229,3 +255,16 @@ This is an example of a [link][minimal-mistakes]
 This tag shows **bold text**.
 ```
 This tag shows **bold text**.
+
+## 참고링크
+- [Markdown Guide][2]
+- [Kramdown][3]
+
+***
+
+[1]: http://ozzieliu.com/2016/04/26/writing-liquid-template-in-markdown-with-jekyll/
+[2]: https://www.markdownguide.org/
+[3]: https://kramdown.gettalong.org/index.html
+
+[^1]: 주석1
+[^2]: 주석2

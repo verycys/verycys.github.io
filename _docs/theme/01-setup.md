@@ -5,7 +5,7 @@ last_modified_at: 2019-03-21
 permalink: /docs/setup/
 ---
 ## 1. 다운로드
-이 가이드는 Jekyll 테마 중 [Minimal-Mistakes][minimal-mistakes-gh] 테마를 적용하여 홈페이지를 만드는 가이드 입니다.
+이 페이지는 Jekyll 테마 중 [Minimal-Mistakes][minimal-mistakes-gh] 테마를 적용하여 홈페이지를 만드는 가이드 입니다.
 테마를 만든 개발자의 가이드는 다음의 [링크][minimal-mistakes-guide]를 참고하면 됩니다.
 오리지널 가이드에서 제가 커스터마이징 한 부분만 기술하였으며 전체를 포괄하지는 않습니다.
 먼저 다음의 [링크][minimal-mistakes-releases]에서 최신버전의 소스코드를 다운 받습니다.
@@ -38,7 +38,6 @@ gem "minimal-mistakes-jekyll"
 - [GCC](https://gcc.gnu.org/install/) 와 [Make](https://www.gnu.org/software/make/) (명령행 인터페이스에서 `gcc -v` 와 `g++ -v`, `make -v` 로 확인할 수 있습니다)
 
 루비 설치가 완료되면 Jekyll과 Bundler의 설치를 위해 다음의 명령을 터미널에 입력합니다.
-{: style="text-align: justify;"}
 ```
 $ gem install jekyll bundler
 ```

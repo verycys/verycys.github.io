@@ -17,10 +17,10 @@ locale                   : "ko"
 title                    : "RYOON NOTEPAD"
 title_separator          : "|"
 name                     : "Ryoon"
-description              : "현재의 제가 되기까지 보고 배워왔던 것들을 기록하는 노트입니다."
-url                      : "https://verycys.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : "개발자가 되고 싶은 한 사람의 공부과정을 작성한 노트입니다."
+url                      : "https://verycys.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "verycys/verycys.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -96,9 +96,9 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : "google" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          :
+    tracking_id          : "UA-134102600-2"
     anonymize_ip         : # true, false (default)
 
 
@@ -206,7 +206,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: "Asia/Seoul" # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins (previously gems:)
