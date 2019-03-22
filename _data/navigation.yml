@@ -15,20 +15,24 @@ lec:
     children:
       - title: "Jekyll Basics"
         url: /lecturenote/jekyll-basics/
-      - title: "Sample"
-        url: /lecturenote/sample/
+      - title: "The Web Developer Bootcamp"
+        url: /lecturenote/the-web-developer-bootcamp/
+      - title: "The Python Mega Course"
+        url: /lecturenote/the-python-mega-course/
+      - title: "Python for Data Science and Machine Learning Bootcamp"
+        url: /lecturenote/python-for-data-science-and-machine-learning-bootcamp/
 
 pro:
   - title: "Project-Note"
     children:
       - title: "GitHub Pages로 블로그 만들기"
         url: /projectnote/create-blog/
-      - title: "Python1"
-        url: /projectnote/python1/
-      - title: "Python2"
-        url: /projectnote/python2/
-      - title: "Python3"
-        url: /projectnote/python3/
+      # - title: "Python1"
+      #   url: /projectnote/python1/
+      # - title: "Python2"
+      #   url: /projectnote/python2/
+      # - title: "Python3"
+      #   url: /projectnote/python3/
 
 boo:
   - title: "Book-Note"

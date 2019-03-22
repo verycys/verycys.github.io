@@ -50,7 +50,8 @@ layout: default
         {% if site.data.ui-text[site.locale].meta_label %}
           <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
         {% endif %}
-        {% include page__taxonomy.html %}
+        <!-- Customizing 카테고리 표시 없앰. -->
+        <!-- {% include page__taxonomy.html %} -->
         {% if page.last_modified_at %}
           <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong> <time datetime="{{ page.last_modified_at | date: "%Y-%m-%d" }}">{{ page.last_modified_at | date: "%B %d, %Y" }}</time></p>
         {% elsif page.date %}
@@ -60,7 +61,8 @@ layout: default
 
       {% if page.share %}{% include social-share.html %}{% endif %}
 
-      {% include post_pagination.html %}
+      <!-- Customizing 이전/다음 표시 없앰. -->
+      <!-- {% include post_pagination.html %} -->
     </div>
 
     {% if jekyll.environment == 'production' and site.comments.provider and page.comments %}

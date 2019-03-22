@@ -1,7 +1,7 @@
 ---
 title:  "Jekyll Basics"
 date:   2019-03-21
-last_modified_at: 2019-03-21
+last_modified_at: 2019-03-23
 ---
 이 강의노트는 Youtube에서 [Mike Dane - Jekyll Basics][1]를 보고 작성하였습니다.
 
@@ -125,7 +125,7 @@ Layout은 HTML로 작성된 홈페이지의 기본 골격입니다. 루트 디�
 {% endraw %}
 기존의 포스트를 다시 보면 새로 작성된 post layout이 적용된 것을 확인할 수 있습니다.
 
-Layout에 다른 layout을 적용하여 쓸 수도 있습니다. `_layouts` 디렉토리에 wrapper.html 파일을 새로 만듭니다. wrapper.html에 다음의 코드를 작성합니다. layout 위 아래에 Wrapper 문구가 표시되도록 하는 코드입니다.
+Layout에 다른 layout을 적용하여 쓸 수도 있습니다. `_layouts` 디렉토리와 그 안에 wrapper.html 파일을 새로 만듭니다. wrapper.html에 다음의 코드를 작성합니다. layout 위 아래에 Wrapper 문구가 표시되도록 하는 코드입니다.
 {% raw %}
 ```html
 <html>
@@ -141,6 +141,7 @@ Layout에 다른 layout을 적용하여 쓸 수도 있습니다. `_layouts` 디�
 </html>
 ```
 {% endraw %}
+<br>
 그리고 post.html을 다음과 같이 작성합니다.
 {% raw %}
 ```html
@@ -152,37 +153,195 @@ layout: "wrapper"
 {{ content }}
 ```
 {% endraw %}
-저장을 한 후 포스트 페이지를 새로고침하면 다음의 화면이 출력됨을 확인할 수 있습니다. 즉, 머리말에 layout 값을 입력해주면 현재 layout에 다른 layout을 적용할 수도 있습니다.
+저장을 한 후 포스트 페이지를 새로고침하면 다음의 화면이 보임을 확인할 수 있습니다. 즉, 머리말에 layout 값을 입력해주면 현재 layout에 다른 layout을 적용할 수도 있습니다.
 {% include figure image_path="/assets/images/posts/jekyll-basics-layouts01.png" %}
-- Jekyll 참고링크(Layouts은 국문사이트가 없습니다.)
+- Jekyll 참고링크[^1]
   - [Layouts][13]
 
 ## Variables
-다시보며 정리해야함
+Jekyll은 작업이 필요한 파일을 찾아 루트 디렉토리를 모두 돌아다닙니다. 작업 대상은 YAML 머리말을 가진 모든 파일입니다. Jekyll은 Liquid tags를 통해 다양한 데이터를 생성합니다. Layouts에서 content도 변수 중 하나입니다. HTML 파일에서 변수를 사용하기 위해서는 아래처럼 변수를 2개의 curly braces[^2]로 감싸줘야 합니다.
+{% raw %}
+```html
+# content 변수 사용
+{{ content }}
+
+# page의 제목 사용
+{{ page.title }}
+```
+{% endraw %}
+Layout의 머리말에 변수를 따로 설정하면 `layout.variable`도 사용할 수 있습니다.
+
+- Jekyll 참고링크
+  - [변수][14]
 
 ## Includes
-다시보며 정리해야함
+Include tag를 사용하면 `_includes` 디렉토리에 저장된 다른 파일의 내용을 포함시킬 수 있습니다. `_includes` 디렉토리와 그 안에 header.html 파일을 새로 만듭니다. 그리고 header.html에 다음의 코드를 작성합니다.
+{% raw %}
+```html
+<h1>{{ site.title }}</h1>
+<hr><br>
+```
+{% endraw %}
+`_layouts` 디렉토리에 있는 wrapper.html 파일을 다음과 같이 수정합니다. 그리고 포스트 페이지를 새로고침하면 header가 포함된 화면이 보임을 확인할 수 있습니다.
+{% raw %}
+```html
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Document</title>
+  </head>
+  <body>
+    Wrapper <br>
+    {% include header.html %}
+    {{ content }}
+    <br> Wrapper
+  </body>
+</html>
+```
+{% endraw %}
+<br>
+Include에 파라메터를 사용할 수도 있습니다. 먼저 wrapper.html 파일을 다음과 같이 수정합니다. color="blue" 코드를 추가하였습니다.
+{% raw %}
+```html
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Document</title>
+  </head>
+  <body>
+    Wrapper <br>
+    {% include header.html color="blue" %}
+    {{ content }}
+    <br> Wrapper
+  </body>
+</html>
+```
+{% endraw %}
+그리고 header.html 파일을 다음과 같이 수정합니다. `include.color`는 파라메터로서 wrapper.html과 같이 include tag를 파라메터 값과 함께 호출하면 그 값이 입력됩니다. 즉, 포스트 페이지를 새로고침하면 `include.color`에 blue값이 입력되면서 title이 파란색으로 변한 것을 확인할 수 있습니다.
+{% raw %}
+```html
+<h1 style="color: {{ include.color }}">{{ site.title }}</h1>
+<hr><br>
+```
+{% endraw %}
+- Jekyll 참고링크
+  - [조각파일][15]
 
 ## Looping Through Posts
-home.html 생성하면 index 레이아웃이 됨.
-포스트 나열하는 거 배움  
-다시 볼 필요없음.
+포스트들의 List를 만드려면 페이지에 다음과 같이 코드를 작성하면 됩니다.
+{% raw %}
+```html
+{% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+  </li>
+{% endfor %}
+```
+{% endraw %}
+
+- Jekyll 참고링크
+  - [포스트 작성하기][16]
 
 ## Conditionals
-post.html에 if 조건문 추가함  
-다시 볼 필요없음.
+포스트에 조건을 설정하려면 페이지에 다음과 같이 코드를 작성하면 됩니다. 아래의 조건은 포스트 list에서 현재 위치한 포스트의 색깔을 붉은색으로 표시하는 겁니다.
+{% raw %}
+```html
+{% for post in site.posts %}
+  <li>
+    <a style="{% if page.url == post.url %}color: red;{% endif %}"
+       href="{{ post.url }}">{{ post.title }}</a>
+  </li>
+{% endfor %}
+```
+{% endraw %}
 
 ## Data Files
-data 폴더 생성, data를 home.html에 끌고오는거 함, large data를 활용할 때 유용  
-다시 볼 필요없음.
+변수뿐만 아니라, Liquid 템플릿 시스템을 통해 접근할 수 있는 자신만의 데이터를 정의할 수 있습니다. Jekyll은 `_data` 디렉토리의 YAML과 json, csv 파일로부터 데이터를 읽어들일 수 있습니다. `site.data`를 통해 이 데이터를 사용할 수 있습니다. 강의에서는 다음과 같이 data 디렉토리와 people.yml 파일을 만든 후 people.yml 파일에 아래의 코드를 작성하였습니다.
+```sh
+├── _data
+│   └── people.yml
+```
+```yml
+- name: "Mike"
+  occupation: "Giraffe Academy"
+
+- name: "Steve"
+  occupation: "Firefighter"
+
+- name: "Rob"
+  occupation: "Programmer"
+```
+HTML 파일에 다음의 코드를 작성하여 data를 사용할 수 있습니다.
+{% raw %}
+```html
+{% for person in site.data.people %}
+  {{ person.name }}, {{ person.occupation }} <br>
+{% endfor %}
+```
+{% endraw %}
+- Jekyll 참고링크
+  - [데이터 파일][17]
 
 ## Static Files
-asstes/img 폴더 생성, yml 파일에 defaults 추가, home.html에 이미지 끌어오는거 함  
-다시 볼 필요없음.
+다음과 같은 코드를 페이지에 작성한 후 브라우저를 실행하면 루트 디렉토리에 있는 모든 static file의 path를 로드할 수 있습니다.
+{% raw %}
+```html
+{% for file in site.static_files %}
+  {{ file.path }}
+{% endfor %}
+```
+{% endraw %}
+<br>
+강의에서는 asstes 디렉토리와 그 하위디렉토리로 images 디렉토리를 만든 후 모든 image 파일을 images 디렉토리로 이동시켰습니다. 그리고 Jekyll에 images 디렉토리 안에 있는 모든 파일은 image라는 것을 인식시키기 위해 `_config.yml` 파일에 다음과 같은 코드를 작성하였습니다.
+```yml
+-
+defaults:
+  scope:
+    path: "assets/images"
+  values:
+    image: true
+```
+그리고 다음과 같은 코드를 페이지에 작성한 후 브라우저를 실행하면 images 디렉토리 안에 있는 모든 image가 로드되는 것을 확인할 수 있습니다.
+{% raw %}
+```html
+{% for file in site.static_files %}
+  {% if file.image %}
+    <img src="{{ file.path }}" alt="{{ file.name }}">
+  {% endif %}
+{% endfor %}
+```
+{% endraw %}
+- Jekyll 참고링크
+  - [정적 파일][18]
+
 
 ## Hosting in Github Pages
-다시보며 정리해아함  
-git checkout -b gh-pages
+Github Pages는 개인이나 단체 또는 저장소를 위한 공개 웹 페이지로서, Github가 제공하는 github.io 도메인이나 자신만의 도메인에 자유롭게 호스팅할 수 있습니다. 먼저 Github에서 새 repository를 만듭니다. 그리고 `_config.yml` 파일의 baseurl에 repository name을 입력합니다.
+
+터미널에 다음의 명령어를 순차적으로 입력합니다.
+```sh
+$ git init
+$ git checkout -b gh-pages
+$ git add .
+$ git commit -m "initial commit"
+# verycys를 your github id로 jekyll-basics를 your repository name으로 변경하면 됩니다.
+$ git remote add origin https://github.com/verycys/jekyll-basics.git
+$ git push origin gh-pages
+```
+로컬 repository에 있던 파일들이 모두 Github에 업로드 되었습니다. Github repository에서 Settings를 클릭한 후 Github Pages 부분을 보면 다음과 같이 사이트 url을 확인할 수 있습니다.
+{% include figure image_path="/assets/images/posts/jekyll-basics-deploy01.png" %}
+해당 url을 클릭하면 로컬 서버에서 보았던 사이트와 동일한 사이트가 호스팅 된 것을 볼 수 있습니다. 앞으로 로컬에서 사이트를 수정하면 터미널에서 다음의 명령어를 입력해야 배포된 사이트에도 적용이 됩니다.
+```sh
+$ git add .
+$ git commit -m "Whatever you want"
+$ git push origin gh-pages
+```
+<br>
+사이트 생성부터 배포까지 모두 완료되었습니다. 수고하셨습니다!
+- Jekyll 참고링크
+  - [Github Pages 배포][19]
+
+## 각주
 
 [1]: https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB
 [2]: https://jekyllrb-ko.github.io/docs/quickstart/
@@ -197,3 +356,12 @@ git checkout -b gh-pages
 [11]: https://github.com/pages-themes/hacker/tree/master/_layouts
 [12]: https://jekyllrb-ko.github.io/docs/themes/
 [13]: https://jekyllrb.com/docs/layouts/
+[14]: https://jekyllrb-ko.github.io/docs/variables/
+[15]: https://jekyllrb-ko.github.io/docs/includes/
+[16]: https://jekyllrb-ko.github.io/docs/posts/
+[17]: https://jekyllrb-ko.github.io/docs/datafiles/
+[18]: https://jekyllrb-ko.github.io/docs/static-files/
+[19]: https://jekyllrb-ko.github.io/docs/github-pages/
+
+[^1]: Jekyll 영문버전에서 Layouts부분은 국문버전에서 없습니다.
+[^2]: { }를 curly braces라고 합니다.

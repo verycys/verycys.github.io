@@ -15,7 +15,7 @@ minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt
 # Site Settings
 locale                   : "ko"
 title                    : "RYOON NOTEPAD"
-title_separator          : "|"
+title_separator          : # "|"
 name                     : "Ryoon"
 description              : "개발자가 되고 싶은 한 사람의 공부과정을 작성한 노트입니다."
 url                      : "https://verycys.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -331,3 +331,9 @@ defaults:
       toc_sticky: true
       sidebar:
         nav: "docs"
+  
+  -
+    scope:
+      path: "assets/images"
+    values:
+      image: true
