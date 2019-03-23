@@ -1,5 +1,5 @@
 ---
-title:  "마크다운 Syntax"
+title:  "Markdown Syntax"
 date:   2019-03-13
 last_modified_at: 2019-03-21
 permalink: /docs/markdown-syntax/
@@ -257,7 +257,7 @@ This tag shows **bold text**.
 ```
 This tag shows **bold text**.
 
-## 참고링크
+## Reference link
 - [Markdown Guide][2]
 - [Kramdown][3]
 

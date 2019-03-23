@@ -154,7 +154,7 @@ layout: "wrapper"
 ```
 {% endraw %}
 저장을 한 후 포스트 페이지를 새로고침하면 다음의 화면이 보임을 확인할 수 있습니다. 즉, 머리말에 layout 값을 입력해주면 현재 layout에 다른 layout을 적용할 수도 있습니다.
-{% include figure image_path="/assets/images/posts/jekyll-basics-layouts01.png" %}
+{% include figure image_path="/assets/images/posts/jekyll-basics-01.png" %}
 - Jekyll 참고링크[^1]
   - [Layouts][13]
 
@@ -329,7 +329,7 @@ $ git remote add origin https://github.com/verycys/jekyll-basics.git
 $ git push origin gh-pages
 ```
 로컬 repository에 있던 파일들이 모두 Github에 업로드 되었습니다. Github repository에서 Settings를 클릭한 후 Github Pages 부분을 보면 다음과 같이 사이트 url을 확인할 수 있습니다.
-{% include figure image_path="/assets/images/posts/jekyll-basics-deploy01.png" %}
+{% include figure image_path="/assets/images/posts/jekyll-basics-02.png" %}
 해당 url을 클릭하면 로컬 서버에서 보았던 사이트와 동일한 사이트가 호스팅 된 것을 볼 수 있습니다. 앞으로 로컬에서 사이트를 수정하면 터미널에서 다음의 명령어를 입력해야 배포된 사이트에도 적용이 됩니다.
 ```sh
 $ git add .
@@ -341,7 +341,7 @@ $ git push origin gh-pages
 - Jekyll 참고링크
   - [Github Pages 배포][19]
 
-## 각주
+## Footnote
 
 [1]: https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB
 [2]: https://jekyllrb-ko.github.io/docs/quickstart/

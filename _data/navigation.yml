@@ -3,12 +3,29 @@ main:
   - title: "Note"
     url: /categories/
   - title: "Documentation"
-    url: /docs/setup/
+    url: /docs/markdown-syntax/
 
   # - title: "BOOK"
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+docs:
+  - title: "Syntax"
+    children:
+      - title: "Markdown Syntax"
+        url: /docs/markdown-syntax/
+      - title: "Python Syntax"
+        url: /docs/python-syntax/
+
+      # - title: "메인페이지 셋팅"
+      #   url: /docs/index
+  - title: "Shortcut - 단축키"
+    children:
+      - title: "Terminal"
+        url: /docs/shortcut/terminal/
+      - title: "Atom"
+        url: /docs/shortcut/atom/
 
 lec:
   - title: "Lecture-Note"
@@ -27,6 +44,8 @@ pro:
     children:
       - title: "GitHub Pages로 블로그 만들기"
         url: /projectnote/create-blog/
+      - title: "Ryoon Notepad 만들기"
+        url: /projectnote/ryoon-notepad/
       # - title: "Python1"
       #   url: /projectnote/python1/
       # - title: "Python2"
@@ -41,19 +60,3 @@ boo:
         url: /booknote/archemist/
       - title: "어스워스 다모다란의 투자철학"
         url: /booknote/investment-philosophies/
-
-docs:
-  - title: "Theme Customizing"
-    children:
-      - title: "기본환경 셋팅"
-        url: /docs/setup/
-      - title: "마크다운 Syntax"
-        url: /docs/markdown-syntax/
-      # - title: "메인페이지 셋팅"
-      #   url: /docs/index
-  - title: "Shortcut - 단축키"
-    children:
-      - title: "Terminal"
-        url: /docs/shortcut/terminal/
-      - title: "Atom"
-        url: /docs/shortcut/atom/
