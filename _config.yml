@@ -132,7 +132,7 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Eamil"
+    - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:verycys@gmail.com"
     - label: "GitHub"
@@ -331,7 +331,7 @@ defaults:
       toc_sticky: true
       sidebar:
         nav: "docs"
-  
+
   -
     scope:
       path: "assets/images"
