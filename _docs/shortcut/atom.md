@@ -2,7 +2,7 @@
 title:  "Atom"
 date:   2019-03-21
 last_modified_at: 2019-03-21
-permalink: /docs/shortcut/atom/
+permalink: /docs/atom/
 toc: false
 ---
 
