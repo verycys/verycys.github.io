@@ -60,5 +60,7 @@ boo:
         url: /booknote/archemist/
       - title: "어스워스 다모다란의 투자철학"
         url: /booknote/investment-philosophies/
-      - title: "파이썬 코딩 도장"
-        url: /booknote/python-dojang/
+      - title: "파이썬 코딩 도장 Unit1 ~ Unit7"
+        url: /booknote/python-dojang-01/
+      - title: "파이썬 코딩 도장 Unit8 ~ UnitX"
+        url: /booknote/python-dojang-02/
