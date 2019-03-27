@@ -10,10 +10,13 @@ toc: false
 `cmd + ,`
 
 새로운 터미널:
-`alt + cmd + t`
+`alt + cmd + T`
 
 Toggle 터미널:
 `ctrl + backquote`
 
 터미널 전환:
-`shift + cmd + k`
+`shift + cmd + K`
+
+행복제:
+`shift + cmd + D`

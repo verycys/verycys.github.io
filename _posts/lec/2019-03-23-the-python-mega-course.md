@@ -1,7 +1,7 @@
 ---
 title:  "The Python Mega Course: Build 10 Real World Applications"
-date:   2019-03-23
-last_modified_at: 2019-03-23
+date:   2019-03-27
+last_modified_at: 2019-03-27
 ---
 이 강의노트는 Udemy에서 [Ardit Sulce - The Python Mega Course: Build 10 Real World Applications][1]를 보고 작성하였습니다.
 
@@ -11,7 +11,7 @@ last_modified_at: 2019-03-23
 ## Python Basics
 > Variables, Strings, Numbers, Built-in Functions, Lists, Tuples, Dictionaries, User Input, Conditionals, Custom Functions, Custom Functions with Multiple Parameters, Opening Files in Python, Working with File Paths, Processing File Content, For Loops, Writing Text to a File, Appending Text to a File
 
-Small Code Examples - basics.py
+Small Code Examples - basics.py: 다음의 코드를 이해하면 Python Basics를 skip해도 됩니다.
 ```python
 address = ["Flat Floor Street", "18", "New York"]
 pins = {"Mike":1234, "Joe":1111, "Jack":2222}
