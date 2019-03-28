@@ -279,7 +279,7 @@ defaults:
     values:
       layout: single
       toc: true
-      toc_sticky: true
+      toc_sticky: false
       permalink: /:categories/:title/
       author_profile: false
       read_time: false
@@ -328,7 +328,7 @@ defaults:
       share: false
       comments: false
       toc: true
-      toc_sticky: true
+      toc_sticky: false
       sidebar:
         nav: "docs"
 

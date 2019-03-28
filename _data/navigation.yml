@@ -46,8 +46,8 @@ pro:
         url: /projectnote/create-blog/
       - title: "Ryoon Notepad 만들기"
         url: /projectnote/ryoon-notepad/
-      # - title: "Python1"
-      #   url: /projectnote/python1/
+      - title: "Python Binance 01"
+        url: /projectnote/python-binance-01/
       # - title: "Python2"
       #   url: /projectnote/python2/
       # - title: "Python3"
@@ -56,10 +56,10 @@ pro:
 boo:
   - title: "Book-Note"
     children:
-      - title: "연금술사"
-        url: /booknote/archemist/
-      - title: "어스워스 다모다란의 투자철학"
-        url: /booknote/investment-philosophies/
+      # - title: "연금술사"
+      #   url: /booknote/archemist/
+      # - title: "어스워스 다모다란의 투자철학"
+      #   url: /booknote/investment-philosophies/
       - title: "파이썬 코딩 도장 Unit1 ~ Unit7"
         url: /booknote/python-dojang-01/
       - title: "파이썬 코딩 도장 Unit8 ~ UnitX"

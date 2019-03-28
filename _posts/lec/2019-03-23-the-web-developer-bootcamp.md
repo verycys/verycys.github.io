@@ -61,7 +61,7 @@ HTML은 크게 Document, Elements 그리고 Attributes로 이루어져 있습니
   </tr>
 </table>
 ```
-<br>
+***
 > Form: User input을 collect하기 위해 사용됩니다.
 
 ```html
@@ -159,7 +159,7 @@ selector {
   property: value;
 }
 ```
-<br>
+***
 > CSS에서 주로 쓰이는 색깔표기의 종류는 Hexadecimal(16진법), RGB, RGBA(RGB에 투명도 추가)가 있습니다. style이 여러가지 적용되었을 때는 뒤에 입력된 코드가 적용됩니다.
 
 ```css
@@ -172,7 +172,7 @@ h1 {
   color: rgba(11, 99, 150, .6);
 }
 ```
-<br>
+***
 > Selector Exercise
 
 ```css
@@ -292,6 +292,7 @@ body {
 - font-weight
   - normal, bold, lighter, bolder, 100 ~ 900의 값을 가집니다.
 
+***
 > Box Model
 
 ```css
