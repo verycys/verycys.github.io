@@ -6,14 +6,17 @@ last_modified_at: 2019-03-27
 이 강의노트는 Udemy에서 [Colt Steele - The Web Developer Bootcamp][1]를 보고 작성하였습니다.
 
 ## 01 - Introduction to this Course
-Important resources에 대한 설명, 강의진행방식, Syllabus 등  
+> Important resources에 대한 설명, 강의진행방식, Syllabus 등
+
 Section1 - 8강에 강의노트와 학생들이 정리한 노트의 다운로드 링크 있음
 
 ## 02 - Introduction to Front End Development
-인터넷이 작동하는 원리, 프론트엔드 개발자와 백엔드 개발자에 대한 간략한 설명
+> 인터넷이 작동하는 원리, 프론트엔드 개발자와 백엔드 개발자에 대한 간략한 설명
 
 ## 03 - Introduction to HTML
-HTML은 HyperText Markup Language의 약자로 웹페이지의 구조를 만드는 언어입니다. 프론트엔드에서 중요한 3가지 언어가 있는데 HTML, CSS, JavaScript입니다. HTML은 웹페이지의 명사, CSS는 형용사, JS는 동사라고 보면 됩니다. HTML에 관해 모르는 것이 나왔을 때 참조할만한 사이트로는 [w3schools][2]과 [MDN][3]을 추천합니다. HTML은 크게 Document, Elements 그리고 Attributes로 이루어져 있습니다.
+> HTML은 HyperText Markup Language의 약자로 웹페이지의 구조를 만드는 언어입니다. 프론트엔드에서 중요한 3가지 언어가 있는데 HTML, CSS, JavaScript입니다. HTML은 웹페이지의 명사, CSS는 형용사, JS는 동사라고 보면 됩니다. HTML에 관해 모르는 것이 나왔을 때 참조할만한 사이트로는 [w3schools][2]과 [MDN][3]을 추천합니다.
+
+HTML은 크게 Document, Elements 그리고 Attributes로 이루어져 있습니다.
 - Document
   - ```html
     <!DOCTYPE html>
@@ -39,8 +42,9 @@ HTML은 HyperText Markup Language의 약자로 웹페이지의 구조를 만드�
   - `<p class="main">Main Paragraph</p>`, `<a href="www.google.com">Go to Google</a>`, `<img src="macpro.png">` 등 ......
 
 ## 04 - Intermediate HTML
+> Table: 표를 만듭니다.
+
 ```html
-#1 Table: 표를 만듭니다.
 <table style="width:100%"> # style은 attribute입니다.
   <caption>Monthly savings</caption> # table 상단에 caption을 추가
   <tr> # table의 행
@@ -57,8 +61,10 @@ HTML은 HyperText Markup Language의 약자로 웹페이지의 구조를 만드�
   </tr>
 </table>
 ```
+<br>
+> Form: User input을 collect하기 위해 사용됩니다.
+
 ```html
-#2 Form: User input을 collect하기 위해 사용됩니다.
 <!-- action attribute는 form data가 전송될 url이며 method attribute는 HTTP request의 type입니다. -->
 <form action="index.html" method="post">
   <!-- 다음의 div tag안의 값은 서버에 first-name=input-value&last-name=input-value 형태로 전달됩니다. -->
@@ -123,7 +129,9 @@ HTML은 HyperText Markup Language의 약자로 웹페이지의 구조를 만드�
 ```
 
 ## 05 - Introduction to CSS
-CSS는 HTML에 style을 주는 언어입니다. CSS에 관해 모르는 것이 나왔을 때 참조할만한 사이트로는 [w3schools][2]과 [MDN][3]을 추천합니다. HTML에 style을 주는 방법은 3가지가 있습니다. 첫번째는 개별 Element에 직접 style을 입력하는 것입니다.
+> CSS는 HTML에 style을 주는 언어입니다. CSS에 관해 모르는 것이 나왔을 때 참조할만한 사이트로는 [w3schools][2]과 [MDN][3]을 추천합니다.
+
+HTML에 style을 주는 방법은 3가지가 있습니다. 첫번째는 개별 Element에 직접 style을 입력하는 것입니다.
 ```html
 <h3 style="color: pink;">blah blah blah </h3>
 ```
@@ -152,7 +160,8 @@ selector {
 }
 ```
 <br>
-CSS에서 주로 쓰이는 색깔표기의 종류는 Hexadecimal(16진법), RGB, RGBA(RGB에 투명도 추가)가 있습니다. style이 여러가지 적용되었을 때는 뒤에 입력된 코드가 적용됩니다.
+> CSS에서 주로 쓰이는 색깔표기의 종류는 Hexadecimal(16진법), RGB, RGBA(RGB에 투명도 추가)가 있습니다. style이 여러가지 적용되었을 때는 뒤에 입력된 코드가 적용됩니다.
+
 ```css
 h1 {
   /* Hexa */
@@ -164,7 +173,8 @@ h1 {
 }
 ```
 <br>
-Selector Exercise
+> Selector Exercise
+
 ```css
 /* Give the all element a background of #bdc3c7 */
 * {
@@ -263,8 +273,9 @@ a:visited {
 ```
 
 ## 06 - Intermediate CSS
+> Font
+
 ```css
-/* Font */
 body {
   font-family: Arial;
   font-size: 2em; # 부모요소 글자크기의 2배
@@ -281,17 +292,154 @@ body {
 - font-weight
   - normal, bold, lighter, bolder, 100 ~ 900의 값을 가집니다.
 
-<br>
-```css
-/* Box Model */
-```
+> Box Model
 
+```css
+p {
+  /* Margin and Padding: %, px, auto 값을 가질 수 있으며 padding도 동일(auto제외)하다 */
+  margin: top right bottom left; # 4개를 기재할 시 적용순서
+  margin: top (right and left) bottom; # 3개를 기재할 시 적용순서
+  margin: (top and bottom) (right and left); # 2개를 기재할 시 적용순서
+  margin: (top and bottom right and left); # 1개를 기재할 시 적용순서
+
+  /* Border: */
+  border: 5px solid red; # width, style, color 순으로 기재, 개별적으로도 지정 가능
+  border-radius: 5px; # 모서리를 둥글게 함
+  box-shadow: 0 2px 4px 0
+    rgba(0,0,0,0.16),0 2px 10px 0
+    rgba(0,0,0,0.12); # 그림자효과
+}
+```
+{% include figure image_path="/assets/images/posts/the-web-01.png" caption="This is a Box Model." %}
 
 ## 07 - Bootstrap
+> Bootstrap Link: [Click!][4]
+
+```html
+<!-- Bootstrap v4.3을 사용하려면 head tag와 body tag에 Bootstrap CDN을 추가해야 함-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+```
+
 ## 08 - Bootstrap 4!
+> Bootstrap3와 Bootstrap4의 차이점과 Bootstrap4의 기본사항
+
 ## 09 - Bootstrap 4: Flexbox and Layout
+> Bootstrap4를 활용하여 Pattern Project와 Museum of Candy 만들기
+
 ## 10 - Introduction to JavaScript
+> JS의 5가지 주요 Datatype: Numbers, Strings, Booleans, Null, Undefined
+
+```js
+// Input을 받는 What is your name? 팝업창을 띄우고 해당 input을 변수 userName에 저장
+var userName = prompt("What is your name?");
+
+// Nice to meet you "userName" 팝업창을 띄움
+alert("Nice to meet you, " + userName);
+
+// 브라우저에 보이지 않지만 console창에 Also great to meet you "userName" 로그남김
+console.log("Also great to meet you, " + userName);
+```
+```js
+var firstName = prompt("What is your first name?");
+var lastName = prompt("What is your last name?");
+var age = prompt("What is your age?");
+
+var fullName = firstName + " " + lastName
+
+console.log("Your full name is " + fullName);
+console.log("You are " + age + " years old");
+```
+```js
+var age = prompt("What is your age?")
+var days = age * 365.25;
+alert(age + " years is roughly " + days + " days");
+```
+
 ## 11 - Javascript Basics: Control Flow
+> Bollean Logic, Conditionals, While Loops, For Loops
+
+```js
+// Conditionals
+var secretNumber = 4; //create secretNumber
+
+var stringGuess = prompt("Guess a number"); //ask user for guess
+var guess = Number(stringGuess);
+
+if(guess === secretNumber) { //check if guess is right
+	alert("YOU GOT IT RIGHT!");
+}
+
+else if(guess > secretNumber){ //check if guess is higher
+	alert("Too high.  Guess again!");
+}
+
+else { //otherwise, check if lower
+	alert("Too low.  Guess again!");
+}
+```
+```js
+// While and For loops
+console.log("PRINTING ALL EVEN BETWEEN 10 AND 40");
+var counter = 10;
+while(counter <= 40){
+	console.log(counter);
+	counter+=2;
+}
+
+console.log("PRINTING ALL EVEN BETWEEN 10 AND 40");
+for(var i = 10; i <= 40; i += 1){
+	if(i % 2 === 0) {
+		console.log(i);
+	}
+}
+
+console.log("PRINTING ALL NUMBERS DIVISIBLE BY 5 AND 3 BETWEEN 5 AND 50");
+var counter = 5;
+while(counter <= 50){
+	if(counter % 5 === 0 && counter % 3 === 0){
+		console.log(counter);
+	}
+	counter+=1;
+}
+
+console.log("PRINTING ALL NUMBERS DIVISIBLE BY 5 AND 3 BETWEEN 5 AND 50");
+for(var i = 5; i <= 50; i++){
+	if(i % 5 === 0 && i % 3 === 0) {
+		console.log(i);
+	}
+}
+```
+```js
+// indexOf
+var answer = prompt("are we there yet?");
+while(answer.indexOf("yes") === -1) {
+	var answer = prompt("are we there yet?");
+}
+alert("YAY, WE MADE IT!!!");
+```
+
 ## 12 - Javascript Basics: Functions
 ## 13 - Javascript Basics: Arrays
 ## 14 - Javascript Basics: Objects
@@ -327,3 +475,4 @@ body {
 [1]: https://www.udemy.com/the-web-developer-bootcamp/
 [2]: https://www.w3schools.com/
 [3]: https://developer.mozilla.org/ko/
+[4]: https://getbootstrap.com/
