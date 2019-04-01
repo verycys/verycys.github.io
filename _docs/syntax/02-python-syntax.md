@@ -1,10 +1,29 @@
 ---
 title:  "Python Syntax"
-date:   2019-03-29
-last_modified_at: 2019-03-29
+date:   2019-04-01
+last_modified_at: 2019-04-01
 permalink: /docs/python-syntax/
 ---
 제가 필요하다고 생각하는 Python Syntax를 정리하였습니다. 나열순서는 ABC 순입니다.
+## %s
+```python
+>>> name = "John"
+>>> surname = "Smith"
+>>> message = "Hi %s %s, you are logged in!" % (name, surname)
+>>> print(message)
+Hi John Smith, you are logged in!
+```
+```python
+>>> a = ['a', 'b', 'c']
+>>> b = [1, 2, 3]
+>>> for i, j in zip(a, b):
+...     print("%s is %s" % (i, j))
+...
+a is 1
+b is 2
+c is 3
+```
+
 ## Boolean operations
 > And, Or, Not
 
@@ -34,6 +53,28 @@ print(korean >= 90 and english > 80 and mathematics > 85 and science >= 80)
 > Comparison_operator: `<`, `>`, `==`, `<=`, `>=`, `!=`, `is (not)`, `(not) in`
 
 비교 기준은 첫 번째 값입니다. 따라서 첫 번째 값보다 큰지, 작은지처럼 읽습니다. `==`와 `!=`는 값 자체를 비교하고 `is (not)`은 객체를 비교합니다.
+
+## Date and Times
+```python
+>>> from datetime import datetime
+>>> delta = datetime.now() - datetime(1900, 12, 31)
+>>> delta.days
+43190
+>>> delta.seconds
+53398
+
+>>> datetime.now()
+datetime.datetime(2019, 4, 1, 14, 51, 28, 788341)
+
+>>> whenever = datetime.strptime("2017:12:31:20:59", "%Y:%m:%d:%H:%M")
+>>> whenever
+datetime.datetime(2017, 12, 31, 20, 59)
+>>> whenever.strftime("%Y")
+'2017'
+>>> whenever.month
+12
+```
+Datetime Formatting Code Source: [http://strftime.org](http://strftime.org)
 
 ## Dictionary
 딕셔너리의 `Key`는 문자열뿐만 아니라 정수, 실수, 불도 사용할 수 있으며 자료형을 섞어서 사용해도 됩니다. 그리고 `Value`에는 리스트, 딕셔너리 등을 포함하여 모든 자료형을 사용할 수 있습니다. 단, 키에는 리스트와 딕셔너리를 사용할 수 없습니다.  
@@ -214,7 +255,8 @@ printing() + 20
 
 빈 변수를 만들고 싶을땐 x = None과 같이 None을 할당해주면 됩니다.
 
-변수 여러 개를 한 번에 만들기
+> 변수 여러 개를 한 번에 만들기
+
 ```sh
 >>> x, y, z = 10, 20, 30 # 변수와 값의 개수가 맞지 않으면 Error가 발생
 >>> x = y = z = 10
@@ -227,29 +269,29 @@ printing() + 20
 >>> y
 10
 ```
-<br>
-변수 삭제
+> 변수 삭제
+
 ```sh
 >>> x = 10
 >>> del x
 ```
-<br>
-산술 연산 후 할당 연산자 사용하기
+> 산술 연산 후 할당 연산자 사용하기
+
 ```sh
 >>> a = 10
 >>> a += 20 # a = a + 20과 동일한 의미입니다.
 >>> a
 30
 ```
-<br>
-입력 값을 정수로 변환하기[^2]
+> 입력 값을 정수로 변환하기[^2]
+
 ```python
 a = int(input('첫 번째 숫자를 입력하세요: '))
 b = int(input('두 번째 숫자를 입력하세요: '))
 print(a + b)
 ```
-<br>
-Map을 사용하여 정수로 변환하기
+> Map을 사용하여 정수로 변환하기
+
 ```python
 a, b = map(int, input('숫자 두 개를 입력하세요: ').split())
 print(a + b)
@@ -386,6 +428,44 @@ print(3)
 15
 ```
 
+## Open
+
+```python
+open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
+
+# employees.txt 생성해서 Mike 쓰기
+>>> myfile = open("employees.txt", "w")
+>>> myfile.write("Mike")
+4
+>>> myfile.close()
+
+# employees.txt에 Jack and Joe 추가하기
+>>> myfile = open("employees.txt", "a")
+>>> myfile.write("\nJack\nJoe")
+9
+>>> myfile.close()
+
+# employees.txt 읽기
+>>> myfile = open("employees.txt", "a")
+>>> myfile.read()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+io.UnsupportedOperation: not readable
+>>> myfile = open("employees.txt", "a+") # a를 a+로 바꿔야 읽기가 가능함
+>>> myfile.read() # Python은 append를 할 것으로 예상하여 커서가 마지막에 위치해 있음
+''
+>>> myfile.seek(0) # 커서위치를 처음으로 변경
+0
+>>> myfile.read()
+'Mike\nJack\nJoe'
+
+ # with를 사용하면 myfile.close()를 실행하지 않아도 자동 종료된다.
+>>> with open("examples.txt", "w") as myfile:
+...     myfile.write("Something")
+...
+9
+```
+
 ## Sequence Type — list, tuple, range, text strings
 - Mutable Sequence Types: list
 - Immutable Sequence Types: tuple, range, text strings
@@ -462,6 +542,23 @@ ame
 C:\some\name
 ```
 제어문자[^3]
+
+## Sys and Os
+```python
+>>> import sys
+>>> sys.prefix # 파이썬이 설치된 경로
+'/Library/Frameworks/Python.framework/Versions/3.6'
+>>> sys.executable # 파이썬 인터프리터의 실행파일 경로
+'/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
+>>> sys.path # 모듈을 찾을 때 참조하는 경로
+['', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python36.zip', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/lib-dynload', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages']
+
+>>> import os
+>>> os.__file__ # os.py가 위치한 경로
+'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/os.py'
+```
+
+
 
 ## Tuple
 튜플은 리스트와 거의 동일하지만 차이점이 있습니다. 괄호가 `[ ]`에서 `( )`로 바뀌며 item들을 변경할 수 없습니다.

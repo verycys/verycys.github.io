@@ -64,39 +64,6 @@ temperatures = [10, -20, 100]
 for i in temperatures:
     print(cel_to_fahr(i))
 ```
-> Handling Text file - open function
-
-```python
->>> help(open)
-Help on built-in function open in module io:
-open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
-
-# employees.txt 생성해서 Mike 쓰기
->>> myfile = open("employees.txt", "w")
->>> myfile.write("Mike")
-4
->>> myfile.close()
-
-# employees.txt에 Jack and Joe 추가하기
->>> myfile = open("employees.txt", "a")
->>> myfile.write("\nJack\nJoe")
-9
->>> myfile.close()
-
-# employees.txt 읽기
->>> myfile = open("employees.txt", "a")
->>> myfile.read()
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-io.UnsupportedOperation: not readable
->>> myfile = open("employees.txt", "a+") # a를 a+로 바꿔야 읽기가 가능함
->>> myfile.read() # Python은 append를 할 것으로 예상하여 커서가 마지막에 위치해 있음
-''
->>> myfile.seek(0) # 커서위치를 처음으로 변경
-0
->>> myfile.read()
-'Mike\nJack\nJoe'
-```
 > Practice 04: Text file에 1, 2, 3 쓰기
 
 ```python
@@ -108,6 +75,8 @@ file.close()
 ```
 
 ## Beyond the Basics
+> Beyond the Basics 중 일부는 Docs - Python Syntax에 정리하였습니다.
+
 > For vs While
 
 ```python
@@ -121,20 +90,95 @@ while x < 3:
     print("Smaller")
     x += 1
 ```
-> %s
+> Module, Package, Library
+
+- Module is a file which contains python functions , global variables etc. It is nothing but .py file which has python executable code / statement.
+- Package is namespace which contains multiple package/modules. It is a directory which contains a special file __init__.py
+- Library is collection of various packages. There is no difference between package and python library conceptually.
 
 ```python
->>> name = "John"
->>> surname = "Smith"
->>> message = "Hi %s %s, you are logged in!" % (name, surname)
->>> print(message)
-Hi John Smith, you are logged in!
+# Python library 설치, glob2는 예시 중 하나
+pip3 install glob2
+python3 -m pip install glob2
+```
+> Practice 01: 다음의 코드는 섭씨를 화씨로 출력하는 함수입니다. text file을 생성하여 50.0, -4.0, 212.0을 쓰는 코드로 변경하세요. (섭씨가 -273.15보다 작으면 어떤 메시지도 쓰면 안됩니다.)
+
+```python
+# 변경전
+temperatures = [10, -20, -289, 100]
+def c_to_f(c):
+    if c < -273.15:
+        return "That temperature doesn't make sense!"
+    else:
+        f = c* 9/5 + 32
+        return f
+for t in temperatures:
+    print(c_to_f(t))
+```
+```python
+# 변경후
+temperatures = [10,-20,-289,100]
+def writer(temperatures, filepath):
+    with open(filepath, 'w') as file:
+        for c in temperatures:
+            if c > -273.15:
+                f = c* 9/5 + 32
+                file.write(str(f) + "\n")
+
+writer(temperatures, "temps.txt")
+```
+> Practice 02: Merging Text Files
+
+```python
+import glob2
+from datetime import datetime
+
+filenames = glob2.glob("*.txt")
+with open(datetime.now().strftime("%Y-%m-%d-%H-%M-%S-%f")+".txt", 'w') as file:
+    for filename in filenames:
+        with open(filename, "r") as f:
+            file.write(f.read() + "\n")
 ```
 
 ## Fixing Programming Errors
 기본적인 Error들과 Stackoverflow 활용 등에 대한 강의로 이루어져 있습니다.
 
 ## Application 1: Build an Interactive Dictionary
+> 같은 디렉토리에 있는 data.json파일을 불러와서 유저가 찾는 단어의 정의를 알려주는 사전입니다. 유저가 찾는 단어가 data에 없더라도 가장 유사한 문자열을 가진 단어가 맞는지 확인질문을 합니다.
+
+```python
+import json
+from difflib import get_close_matches
+
+data = json.load(open("data.json")) # data파일 로드
+
+def translate(w):
+    w = w.lower() # 대문자를 소문자로 변경
+    if w in data:
+        return data[w]
+    elif w.title() in data: # if user entered "texas" this will check for "Texas" as well.
+        return data[w.title()]
+    elif w.upper() in data: #in case user enters words like USA or NATO , like acronyms(두문자어)
+        return data[w.upper()]
+    elif len(get_close_matches(w, data.keys())) > 0:
+        yn = input("Did you mean %s instead? Enter Y if yes, or N if no: " % get_close_matches(w, data.keys())[0])
+        if yn == "Y":
+            return data[get_close_matches(w, data.keys())[0]]
+        elif yn == "N":
+            return "The word doesn't exist. Please double check it."
+        else:
+            return "We didn't understand your entry."
+    else:
+        return "The word doesn't exist. Please double check it."
+
+word = input("Enter word: ")
+output = translate(word)
+if type(output) == list:
+    for item in output:
+        print(item)
+else:
+    print(output)
+```
 
 ## Data Analysis with Pandas
 
