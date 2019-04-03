@@ -14,6 +14,19 @@ toc: false
 `ctrl + E`
 
 ***
+루트 디렉토리에서 Atom 열기
+```sh
+# 터미널에서 루트 디렉토리로 이동한 후 아래의 명령어를 입력
+$ atom .
+
+# 한단계 상위 디렉토리 열기
+$ atom ..
+```
+터미널에서 Python Script 보기
+```sh
+$ cat sample.py
+```
+
 디렉토리 파일리스트 조회
 ```sh
 $ ls

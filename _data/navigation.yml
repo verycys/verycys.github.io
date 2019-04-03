@@ -26,6 +26,10 @@ docs:
         url: /docs/terminal/
       - title: "Atom"
         url: /docs/atom/
+      - title: "PyCharm"
+        url: /docs/pycharm/
+      - title: "Linux-Ubuntu"
+        url: /docs/ubuntu/
 
 lec:
   - title: "Lecture-Note"
@@ -38,6 +42,10 @@ lec:
         url: /lecturenote/the-python-mega-course/
       - title: "Python for Data Science and Machine Learning Bootcamp"
         url: /lecturenote/python-for-data-science-and-machine-learning-bootcamp/
+      - title: "Openhash - Coding and AI(초급)"
+        url: /lecturenote/openhash-01/
+      - title: "Algorithmic Trading: Backtest, Optimize & Automate in Python"
+        url: /lecturenote/algorithmic-trading/
 
 pro:
   - title: "Project-Note"
@@ -46,8 +54,8 @@ pro:
         url: /projectnote/create-blog/
       - title: "Ryoon Notepad 만들기"
         url: /projectnote/ryoon-notepad/
-      - title: "Python Binance 01"
-        url: /projectnote/python-binance-01/
+      # - title: "Python Binance 01"
+      #   url: /projectnote/python-binance-01/
       # - title: "Python2"
       #   url: /projectnote/python2/
       # - title: "Python3"

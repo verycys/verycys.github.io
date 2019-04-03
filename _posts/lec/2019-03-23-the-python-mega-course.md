@@ -1,6 +1,6 @@
 ---
-title:  "The Python Mega Course: Build 10 Real World Applications"
-date:   2019-04-01
+title: "The Python Mega Course: Build 10 Real World Applications"
+date: 2019-04-01
 last_modified_at: 2019-04-01
 ---
 이 강의노트는 Udemy에서 [Ardit Sulce - The Python Mega Course: Build 10 Real World Applications][1]를 보고 작성하였습니다.
@@ -181,6 +181,33 @@ else:
 ```
 
 ## Data Analysis with Pandas
+> Settings
+
+```python
+pip3 install pandas
+pip3 install ipython
+pip3 install jupyter
+pip3 install xlrd
+
+# 가상환경 활성화
+source venv/bin/activate
+# 가상환경 비활성화
+deactivate
+```
+> Data load
+
+```python
+import pandas
+```
+
+|   | ID |         Address |          City |    State | Country |        Name | Employees |
+|--:|---:|----------------:|--------------:|---------:|--------:|------------:|----------:|
+| 0 |  1 |    3666 21st St | San Francisco | CA 94114 |     USA |     Madeira |         8 |
+| 1 |  2 |  735 Dolores St | San Francisco | CA 94119 |     USA | Bready Shop |        15 |
+| 2 |  3 |     332 Hill St | San Francisco | CA 94114 |     USA | Super River |        25 |
+| 3 |  4 |    3995 23rd St | San Francisco | CA 94114 |     USA |  Ben's Shop |        10 |
+| 4 |  5 | 1056 Sanchez St | San Francisco | CA 94114 |     USA |     Sanchez |        12 |
+| 5 |  6 | 551 Alvarado St | San Francisco | CA 94114 |     USA |  Richvalley |        20 |
 
 [1]: https://www.udemy.com/the-python-mega-course/
 [2]: https://www.pythonanywhere.com

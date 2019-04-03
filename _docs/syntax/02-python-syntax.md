@@ -5,6 +5,9 @@ last_modified_at: 2019-04-01
 permalink: /docs/python-syntax/
 ---
 제가 필요하다고 생각하는 Python Syntax를 정리하였습니다. 나열순서는 ABC 순입니다.
+## `_`(underscore)
+참고링크: [https://hackernoon.com/understanding-the-underscore-of-python-309d1a029edc](https://hackernoon.com/understanding-the-underscore-of-python-309d1a029edc)
+
 ## %s
 ```python
 >>> name = "John"
@@ -48,6 +51,24 @@ print(korean >= 90 and english > 80 and mathematics > 85 and science >= 80)
 파이썬 쉘에 `help(len)`을 입력하면 len함수에 대한 설명창이 생깁니다. 종료를 하려면 Q를 누르면 됩니다.
 
 ## Class
+> Classes provide a means of bundling data and functionality together. Creating a new class creates a new type of object,
+allowing new instances of that type to be made.
+
+예를 들어 사람, 고양이 등은 Object입니다. 모든 사람과 고양이는 이름, 신장, 몸무게, 성별 등의 속성을 공유하고 있기 때문입니다.
+```python
+class Cat:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def hungry(self):
+    	print("Miaou")
+```
+```python
+>>> floki = Cat("floki", 3)
+>>> floki.hungry()
+'Miaou'
+```
 
 ## Comparison
 > Comparison_operator: `<`, `>`, `==`, `<=`, `>=`, `!=`, `is (not)`, `(not) in`
@@ -118,7 +139,15 @@ KeyError: 0
 {'one': 42, 'three': 3, 'four': 4, 'two': None}
 ```
 
+## For loop
+```python
+for val in sequence:
+    do something
+```
+
 ## Function
+> A function is a froup of connected statements(code) that perform a specific task.
+
 예시로 피보나치 수열을 만드는 함수를 정의해 보겠습니다.
 ```python
 def fib(n): # write Fibonacci series up to n
@@ -239,6 +268,17 @@ print(returning() + 20)
 printing() + 20
 ```
 `test1.py`를 실행하면 30과 100 그리고 Error문구를 확인할 수 있습니다. `returning` 함수에 20을 더한 것은 실행이 되었지만 `printing` 함수에 20을 더한 것은 실행이 되지 않은 것입니다. `returning` 함수의 type은 int이고 `printing` 함수의 type은 NoneType이기 때문입니다. 그러므로 함수의 반환값을 재사용하고 싶다면 `print`가 아닌 `return`을 써야합니다.
+
+## Import
+```python
+import <module_name>
+import time
+time.sleep(7)
+
+# 메모리 절약을 위해 module 중 일부 function만 import 가능
+from time import sleep
+sleep(7)
+```
 
 ## Input and Output with Variable
 변수 이름은 원하는 대로 지으면 되지만 다음과 같은 규칙을 지켜야 합니다.

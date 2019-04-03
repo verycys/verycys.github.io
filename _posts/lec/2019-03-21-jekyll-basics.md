@@ -1,6 +1,6 @@
 ---
-title:  "Jekyll Basics"
-date:   2019-03-21
+title: "Jekyll Basics"
+date: 2019-03-21
 last_modified_at: 2019-03-23
 ---
 이 강의노트는 Youtube에서 [Mike Dane - Jekyll Basics][1]를 보고 작성하였습니다.

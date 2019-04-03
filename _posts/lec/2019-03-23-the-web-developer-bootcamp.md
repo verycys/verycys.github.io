@@ -1,6 +1,6 @@
 ---
-title:  "The Web Developer Bootcamp"
-date:   2019-03-27
+title: "The Web Developer Bootcamp"
+date: 2019-03-27
 last_modified_at: 2019-03-27
 ---
 이 강의노트는 Udemy에서 [Colt Steele - The Web Developer Bootcamp][1]를 보고 작성하였습니다.
