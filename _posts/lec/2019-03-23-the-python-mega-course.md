@@ -1,7 +1,7 @@
 ---
 title: "The Python Mega Course: Build 10 Real World Applications"
-date: 2019-04-01
-last_modified_at: 2019-04-01
+date: 2019-04-08
+last_modified_at: 2019-04-08
 ---
 이 강의노트는 Udemy에서 [Ardit Sulce - The Python Mega Course: Build 10 Real World Applications][1]를 보고 작성하였습니다.
 
@@ -181,7 +181,7 @@ else:
 ```
 
 ## Data Analysis with Pandas
-> Settings
+> Pandas의 기본적인 활용법을 설명합니다.
 
 ```python
 pip3 install pandas
@@ -189,25 +189,56 @@ pip3 install ipython
 pip3 install jupyter
 pip3 install xlrd
 
-# 가상환경 활성화
+# 가상환경 활성화 후 주피터 노트북 실행
 source venv/bin/activate
+jupyter notebook
+
 # 가상환경 비활성화
 deactivate
 ```
-> Data load
+
+## Numpy
+> Numpy의 기본적인 활용법을 설명합니다.
+
+## Application2: Create Webmaps with Folium
+> 실행 시 Map1.html 파일이 생성되며 해당 파일을 실행하면 웹페이지 상에 인구분포, Volcano의 정보가 포함된 지도가 나타납니다.
 
 ```python
+import folium
 import pandas
-```
 
-|   | ID |         Address |          City |    State | Country |        Name | Employees |
-|--:|---:|----------------:|--------------:|---------:|--------:|------------:|----------:|
-| 0 |  1 |    3666 21st St | San Francisco | CA 94114 |     USA |     Madeira |         8 |
-| 1 |  2 |  735 Dolores St | San Francisco | CA 94119 |     USA | Bready Shop |        15 |
-| 2 |  3 |     332 Hill St | San Francisco | CA 94114 |     USA | Super River |        25 |
-| 3 |  4 |    3995 23rd St | San Francisco | CA 94114 |     USA |  Ben's Shop |        10 |
-| 4 |  5 | 1056 Sanchez St | San Francisco | CA 94114 |     USA |     Sanchez |        12 |
-| 5 |  6 | 551 Alvarado St | San Francisco | CA 94114 |     USA |  Richvalley |        20 |
+data = pandas.read_csv("Volcanoes.txt")
+lat = list(data["LAT"])
+lon = list(data["LON"])
+elev = list(data["ELEV"])
+
+def color_producer(elevation):
+    if elevation < 1000:
+        return 'green'
+    elif 1000 <= elevation < 3000:
+        return 'orange'
+    else:
+        return 'red'
+map = folium.Map(location=[38.58, -99.09], zoom_start=6, tiles="Mapbox Bright")
+
+fgv = folium.FeatureGroup(name="Volcanoes")
+
+for lt, ln, el in zip(lat, lon, elev):
+    fgv.add_child(folium.CircleMarker(location=[lt, ln], radius = 6, popup=str(el)+" m",
+    fill_color=color_producer(el), fill=True,  color = 'grey', fill_opacity=0.7))
+
+fgp = folium.FeatureGroup(name="Population")
+
+fgp.add_child(folium.GeoJson(data=open('world.json', 'r', encoding='utf-8-sig').read(),
+style_function=lambda x: {'fillColor':'green' if x['properties']['POP2005'] < 10000000
+else 'orange' if 10000000 <= x['properties']['POP2005'] < 20000000 else 'red'}))
+
+map.add_child(fgv)
+map.add_child(fgp)
+map.add_child(folium.LayerControl())
+
+map.save("Map1.html")
+```
 
 [1]: https://www.udemy.com/the-python-mega-course/
 [2]: https://www.pythonanywhere.com
